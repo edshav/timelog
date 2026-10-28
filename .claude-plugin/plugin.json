@@ -1,0 +1,6 @@
+{
+  "name": "timelog",
+  "description": "Hours from your Claude Code sessions, per project directory, confirmed by you into a CSV time log.",
+  "author": { "name": "Eduard Shavyrko", "url": "https://github.com/edshav" },
+  "repository": "https://github.com/edshav/timelog"
+}

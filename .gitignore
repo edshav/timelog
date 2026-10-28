@@ -1,0 +1,5 @@
+# the log is personal data and lives in $TIMELOG_DATA, never here
+timelog.csv
+.confirmed
+__pycache__/
+.claude/settings.local.json

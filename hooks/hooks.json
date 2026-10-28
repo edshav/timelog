@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I \"${CLAUDE_PLUGIN_ROOT}/timelog.py\" hook",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
