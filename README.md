@@ -34,7 +34,7 @@ git add . && git commit -qm 'log: start'
 | Variable | Default | Meaning |
 |---|---|---|
 | `TIMELOG_ROOT` | `~/projects` | Sessions under this directory are counted. |
-| `TIMELOG_DATA` | `$TIMELOG_ROOT/timelog-data` | Git repo holding `timelog.csv` and `.confirmed`. |
+| `TIMELOG_DATA` | `$TIMELOG_ROOT/timelog-data` | Git repo holding `timelog.csv`, `.confirmed` and `clients/*.md`. |
 
 Set them in the `env` block of `~/.claude/settings.json` so both the hook and `/timelog` see
 them, as absolute paths: nothing expands `~` there.
@@ -43,6 +43,8 @@ them, as absolute paths: nothing expands `~` there.
 
 - `/timelog`: draft every unconfirmed day, then "ok", "ok, skip 3" or "ok, 3 to general".
 - `/timelog yesterday call 0.5 acme`: one manual row for time without Claude.
+- `/timelog:invoice-summary acme`: last month's work summary for the invoice, per
+  `$TIMELOG_DATA/clients/acme.md` (`language`, `format`, `rate`, `notes`).
 
 macOS and Linux only. Requires `/usr/bin/python3` (3.9+) and `git`. Self-check:
 `/usr/bin/python3 -I timelog.py test`.
