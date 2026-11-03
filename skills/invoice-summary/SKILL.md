@@ -16,6 +16,9 @@ Rules:
 - The draft follows `format` exactly. Hours go into it only when `format` says so. Without hours, nothing that lets the rate be derived goes in either: no per-area shares, no day counts, no "N h" in task text.
 - The amount is the user's number: compute it only when the settings give a `rate` and `format` bills by hours (with python), otherwise leave `___`.
 - Write in the client's `language`, translating task notes that are in another language.
+- Claim only the user's part. When a note names someone else's work (their PR, their deploy, a payout the client made), the line says what the user did with it: requirements, review, a check. A note that does not say who did the work gets the cautious wording, and the user is asked.
+- Each line says what was done ("the node map is live"), not a topic ("node map").
+- A row holding several tasks is never split by guessing: it stays whole, and when the user drops one of its tasks, ask how much to take off.
 - Nothing is written to disk, nothing is committed: the draft lives in chat only.
 
 ## Steps
@@ -27,6 +30,6 @@ cd "${TIMELOG_DATA:-${TIMELOG_ROOT:-$HOME/projects}/timelog-data}" && cat "clien
 ```
 
 2. If `.confirmed` is before the month's last day, say which days are not logged yet and ask whether to go on.
-3. Group the rows into 3–6 areas of work by what the client got (a feature, a fix, a campaign), not by repo; calls and planning are one area. Sum hours per area with python, not in your head.
-4. Show the user, outside the draft: a table of areas with hours, and the total hours. This is for setting the price.
-5. Then the draft in one fenced block, ready to paste: month as the heading, one line per area, the total. Paragraphs are not hard-wrapped.
+3. Group the rows into 3–6 areas of work by what the client got (a feature, a fix, a campaign), not by repo; calls and planning are one area. Sum hours per area with python, not in your head; split each line on its first three commas only, since task text holds commas.
+4. Show the user, outside the draft, for setting the price: per area, its rows (date, repo, hours, task) under the area's subtotal, then the total hours. Mark with ⚠ the rows a client may not expect to pay for: the user's own tooling and process (skills, review CI, session setup), and work that fits another area.
+5. Then the draft in one fenced block, ready to paste: month as the heading, per area its heading and one line per thing done, the total. Paragraphs are not hard-wrapped.
